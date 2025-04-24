@@ -1,20 +1,23 @@
-package com.feng.vrquestion.model.response;
+package com.feng.vrquestion.model.request.question;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.feng.vrquestion.model.common.Option;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public class AnswerstatusResponse implements Serializable {
+public class AnswerStatusDto implements Serializable {
 
     /**
-     * 病人姓名
+     * 病人Id
      */
-    private String patientName;
+    private Long patientId;
+
+    /**
+     * 问题Id
+     */
+    private Long questionId;
 
     /**
      * 病人的回答（ABCD或无）
