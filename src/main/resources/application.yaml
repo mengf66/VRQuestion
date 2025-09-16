@@ -4,12 +4,12 @@ spring:
   application:
     name: VRQuestion
   profiles:
-    active: dev
+    active: pro
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/vrquestion?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://127.0.0.1:3306/VRQuestion?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: 314914.fgz
+    username: VRQuestion
+    password: GcMNsW2yAj73EnTr
   # session 失效时间（分钟）
   session:
     timeout: 1000
@@ -17,7 +17,7 @@ spring:
   # redis 配置
   redis:
     port: 6379
-    host: 192.168.208.130
+    host: 127.0.0.1
     database: 2
     password: 314914.fgz
 mybatis-plus:

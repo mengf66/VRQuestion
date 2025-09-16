@@ -14,20 +14,18 @@ import com.feng.vrquestion.model.request.question.AnswerstatusAddRequest;
 import com.feng.vrquestion.model.request.question.QuestionAddRequest;
 import com.feng.vrquestion.model.request.question.QuestionAnswer;
 import com.feng.vrquestion.model.response.AnswerstatusResponse;
+import com.feng.vrquestion.model.response.AnswerstatusShowResponse;
 import com.feng.vrquestion.model.response.QuestionAnswerResponse;
 import com.feng.vrquestion.service.AnswerstatusService;
 import com.feng.vrquestion.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/question")
+@RequestMapping("/vqquestion/question")
 @RequiredArgsConstructor
 @Slf4j
 public class QuestionController {
@@ -50,7 +48,7 @@ public class QuestionController {
         if(answerstatusAddRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "请求参数为空");
         }
-        AnswerstatusResponse answerstatusResponse = questionService.judge(answerstatusAddRequest);
+        AnswerstatusResponse answerstatusResponse = answerstatusService.judge(answerstatusAddRequest);
         return R.ok(answerstatusResponse);
     }
 
@@ -59,7 +57,7 @@ public class QuestionController {
         if(answerStatusDto == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "请求参数为空");
         }
-        AnswerstatusResponse answerstatusResponse = questionService.saveAnswer(answerStatusDto);
+        AnswerstatusResponse answerstatusResponse = answerstatusService.saveAnswer(answerStatusDto);
         return R.ok(answerstatusResponse);
     }
 
@@ -80,5 +78,14 @@ public class QuestionController {
         }
         Long questionId = question.getId();
         return R.ok(questionId);
+    }
+
+    @GetMapping("/show/{pId}")
+    public R<List<AnswerstatusShowResponse>> show(@PathVariable("pId") Long pId) {
+        if(pId == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "空参数");
+        }
+        List<AnswerstatusShowResponse> list = answerstatusService.show(pId);
+        return R.ok(list);
     }
 }

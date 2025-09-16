@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping("/patients")
+@RequestMapping("/vqquestion/patients")
 @RequiredArgsConstructor
 @Slf4j
 public class PatientsController {

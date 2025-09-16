@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/vqquestion/user")
 @RequiredArgsConstructor
 @Slf4j
 public class DoctorUserController {
